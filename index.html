@@ -4,62 +4,444 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ditto - Kpop Girls Group 4K Wallpapers</title>
+    <meta name="description" content="Download aesthetic 4K Ultra HD wallpapers of NewJeans, aespa, IVE, LE SSERAFIM, TWICE, BLACKPINK and your favorite K-Pop idol groups.">
+    <meta name="theme-color" content="#ffd0e3">
+
+    <!-- Google Fonts: SF Pro / Inter / Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body, html {
-            width: 100%; height: 100%; overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #FFEBF3 url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
+        :root {
+            --pink-bg-start: #ffd3e4;
+            --pink-bg-mid: #f5c4ee;
+            --pink-bg-end: #e6bdf9;
+            --y2k-pink: #ff4d94;
+            --y2k-dark-pink: #d91b6c;
+            --text-dark: #4a1532;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-shadow: 0 12px 40px rgba(220, 80, 140, 0.15);
         }
-        .video-container {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            display: flex; justify-content: center; align-items: center; z-index: 1;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        video { width: 100%; height: 100%; object-fit: cover; }
-        .overlay {
-            position: absolute; bottom: 30px; left: 50%;
-            transform: translateX(-50%); z-index: 10;
-            width: 90%; max-width: 440px; padding: 24px 20px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-            border-radius: 30px; border: 2px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 15px 35px rgba(220, 30, 110, 0.2); text-align: center;
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--pink-bg-start) 0%, var(--pink-bg-mid) 50%, var(--pink-bg-end) 100%);
         }
-        h1 {
-            font-size: 32px; font-weight: 900; margin-bottom: 4px; letter-spacing: 2px;
-            background: linear-gradient(45deg, #ec2f7b, #9b30a8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+        /* Optional: Uncomment line below if you upload your background image as 'background.jpg' */
+        /* body { background: url('background.jpg') center/cover no-repeat fixed; } */
+
+        /* Canvas & Moving Background Animation */
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
-        p { font-size: 14px; font-weight: 700; color: #7A2855; margin-bottom: 14px; }
-        .badge {
-            display: inline-block; padding: 10px 20px;
-            background: linear-gradient(135deg, #ec2f7b, #9b30a8);
-            color: #fff; font-size: 13px; font-weight: 800; border-radius: 24px;
-            text-decoration: none; margin-bottom: 14px;
+
+        /* Floating Light Rings / Halos */
+        .halo-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: rotateX(75deg) rotateY(15deg);
+            z-index: 1;
+            pointer-events: none;
+            animation: haloFloat 12s ease-in-out infinite alternate;
         }
-        .footer-links { margin-top: 10px; font-size: 12px; }
-        .footer-links a { color: #7A2855; text-decoration: none; font-weight: bold; margin: 0 8px; }
-        .footer-links a:hover { text-decoration: underline; }
+
+        .halo-ring-1 {
+            width: 320px;
+            height: 320px;
+            top: -40px;
+            left: -60px;
+        }
+
+        .halo-ring-2 {
+            width: 450px;
+            height: 450px;
+            bottom: 10%;
+            right: -100px;
+            animation-delay: -6s;
+        }
+
+        @keyframes haloFloat {
+            0% { transform: rotateX(75deg) rotateY(15deg) translateY(0px) scale(1); }
+            50% { transform: rotateX(70deg) rotateY(25deg) translateY(-25px) scale(1.05); }
+            100% { transform: rotateX(80deg) rotateY(10deg) translateY(15px) scale(0.98); }
+        }
+
+        /* Floating Bottom Cloud Layers */
+        .clouds-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 240px;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .cloud {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 230, 245, 0.8) 70%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(12px);
+            animation: cloudDrift 18s ease-in-out infinite alternate;
+        }
+
+        .cloud-1 { width: 400px; height: 200px; left: -80px; }
+        .cloud-2 { width: 500px; height: 220px; right: -100px; animation-delay: -5s; }
+        .cloud-3 { width: 600px; height: 250px; left: 25%; bottom: -90px; animation-delay: -9s; opacity: 0.85; }
+
+        @keyframes cloudDrift {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-20px) scale(1.08); }
+        }
+
+        /* Main Container */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 960px;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glass Hero Card */
+        .hero-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 36px;
+            padding: 48px 36px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* App Badge Header */
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--y2k-dark-pink);
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(255, 77, 148, 0.15);
+        }
+
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #d91b6c 0%, #90268e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #6a244b;
+            max-width: 640px;
+            margin: 0 auto 32px auto;
+            font-weight: 500;
+        }
+
+        /* App Store Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ff4d94 0%, #d91b6c 100%);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(217, 27, 108, 0.35);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(217, 27, 108, 0.45);
+        }
+
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--y2k-dark-pink);
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #6a244b;
+            line-height: 1.5;
+        }
+
+        /* Footer & Legal Links */
+        footer {
+            position: relative;
+            z-index: 10;
+            padding: 32px 24px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #7d2a57;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--y2k-dark-pink);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #8c3b69;
+        }
+
+        @media (max-width: 640px) {
+            .title { font-size: 2.2rem; }
+            .subtitle { font-size: 1rem; }
+            .hero-card { padding: 32px 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <video autoplay loop muted playsinline preload="auto">
-            <source src="launch.mp4" type="video/mp4">
-        </video>
+
+    <!-- Canvas for Twinkling Y2K Stars -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Animated Light Halos -->
+    <div class="halo-ring halo-ring-1"></div>
+    <div class="halo-ring halo-ring-2"></div>
+
+    <!-- Soft Fluffy Clouds -->
+    <div class="clouds-container">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
     </div>
 
-    <div class="overlay">
-        <h1>DITTO</h1>
-        <p>Kpop Girls Group 4K Wallpapers</p>
-        <div class="badge">✨ Coming Soon to App Store</div>
+    <!-- Main Content Wrapper -->
+    <div class="wrapper">
+        <header class="hero-card">
+            <div class="app-badge">
+                <span>✨ Official iOS App</span>
+            </div>
+            
+            <h1 class="title">Ditto</h1>
+            <p style="font-family: 'Outfit'; font-size: 1.25rem; font-weight: 700; color: #b82367; margin-top: -10px; margin-bottom: 16px;">
+                Kpop Girls Group 4K Wallpapers
+            </p>
 
+            <p class="subtitle">
+                Express your fandom with ultra-high-definition 4K lockscreen & homescreen wallpapers of NewJeans, aespa, IVE, LE SSERAFIM, TWICE, BLACKPINK, and more!
+            </p>
+
+            <a href="https://apps.apple.com" target="_blank" class="download-btn">
+                <svg viewBox="0 0 384 512">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-15 69.5-34.3z"/>
+                </svg>
+                Download on the App Store
+            </a>
+
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-title">Ultra 4K HD Quality</div>
+                    <div class="feature-desc">Crisp, retouched high-resolution wallpapers optimized for iPhone lockscreens.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👑</div>
+                    <div class="feature-title">All Top Girl Groups</div>
+                    <div class="feature-desc">Browse dedicated categories for NewJeans, aespa, IVE, LE SSERAFIM & TWICE.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Fast One-Tap Save</div>
+                    <div class="feature-desc">Instantly download wallpapers in 4K resolution directly to your iOS Photos app.</div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Footer with Required App Store & AdMob Policy Links -->
+    <footer>
         <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a> • 
-            <a href="terms.html">Terms of Service</a> • 
-            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="support.html">Support & Contact</a>
+            <a href="app-ads.txt" target="_blank">app-ads.txt</a>
         </div>
-    </div>
+        <p class="copyright">© 2026 Ditto - Kpop Girls Group 4K Wallpapers. All rights reserved.</p>
+    </footer>
+
+    <!-- Canvas Animation Script for Twinkling 4-Point Stars -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 12 + 6;
+                this.maxAlpha = Math.random() * 0.7 + 0.3;
+                this.alpha = 0;
+                this.speed = Math.random() * 0.02 + 0.008;
+                this.growing = true;
+                this.rotation = Math.random() * Math.PI;
+            }
+
+            update() {
+                if (this.growing) {
+                    this.alpha += this.speed;
+                    if (this.alpha >= this.maxAlpha) this.growing = false;
+                } else {
+                    this.alpha -= this.speed;
+                    if (this.alpha <= 0) this.reset();
+                }
+                this.rotation += 0.005;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#ffffff';
+
+                // Draw 4-Point Y2K Sparkle Star
+                ctx.beginPath();
+                const r = this.size;
+                ctx.moveTo(0, -r);
+                ctx.quadraticCurveTo(0, 0, r, 0);
+                ctx.quadraticCurveTo(0, 0, 0, r);
+                ctx.quadraticCurveTo(0, 0, -r, 0);
+                ctx.quadraticCurveTo(0, 0, 0, -r);
+                ctx.fill();
+
+                ctx.restore();
+            }
+        }
+
+        const stars = Array.from({ length: 35 }, () => new Star());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
